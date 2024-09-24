@@ -88,11 +88,11 @@ else
                     string? firstAppearance = Console.ReadLine();
                     Console.WriteLine("Enter year created:");
                     UInt64 yearCreated = UInt64.Parse(Console.ReadLine());
-                    
+
                     // Console.WriteLine($"{Id}, {Name}, {Description}, {species}, {firstAppearance}, {yearCreated}");
-                                        // create file from data
+                    // create file from data
                     StreamWriter sw = new(file, true);
-                    sw.WriteLine($"{Id},{Name},{Description}");
+                    sw.WriteLine($"{Id},{Name},{Description}, {species}, {firstAppearance}, {yearCreated}");
                     sw.Close();
                     // add new character details to Lists
                     Ids.Add(Id);
