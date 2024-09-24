@@ -79,10 +79,18 @@ else
                 {
                     // generate id - use max value in Ids + 1
                     UInt64 Id = Ids.Max() + 1;
-                   // input character description
+                    // input character description
                     Console.WriteLine("Enter description:");
                     string? Description = Console.ReadLine();
-                    Console.WriteLine($"{Id}, {Name}, {Description}");                }
+                    Console.WriteLine("Enter species:");
+                    string? species = Console.ReadLine();
+                    Console.WriteLine("Enter first appearance:");
+                    string? firstAppearance = Console.ReadLine();
+                    Console.WriteLine("Enter year created:");
+                    UInt64 yearCreated = UInt64.Parse(Console.ReadLine());
+                    
+                    Console.WriteLine($"{Id}, {Name}, {Description}, {species}, {firstAppearance}, {yearCreated}");
+                }
             }
             else
             {
