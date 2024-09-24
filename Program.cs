@@ -18,7 +18,7 @@ else
     List<string> Species = [];
     List<string> FirstAppearance = [];
     List<UInt64> YearCreated = [];
-        // to populate the lists with data, read from the data file
+    // to populate the lists with data, read from the data file
     try
     {
         StreamReader sr = new(file);
@@ -27,7 +27,23 @@ else
         while (!sr.EndOfStream)
         {
             string? line = sr.ReadLine();
-            Console.WriteLine(line);
+            if (line is not null)
+            {
+                // character details are separated with comma(,)
+                string[] characterDetails = line.Split(',');
+                // 1st array element contains id
+                Ids.Add(UInt64.Parse(characterDetails[0]));
+                // 2nd array element contains character name
+                Names.Add(characterDetails[1]);
+                // 3rd array element contains character description
+                Descriptions.Add(characterDetails[2]);
+                // 4th array element contains character species
+                Species.Add(characterDetails[3]);
+                // 5th array element contains character first appearance
+                FirstAppearance.Add(characterDetails[4]);
+                // 6th array element contains character year created
+                YearCreated.Add(UInt64.Parse(characterDetails[5]));
+            }
         }
         sr.Close();
     }
