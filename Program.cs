@@ -14,10 +14,10 @@ else
     //create parallel lists of character details
     List<UInt64> Ids = [];
     List<string> Names = [];
-    List<string> Descriptions = [];
-    List<string> Species = [];
-    List<string> FirstAppearance = [];
-    List<UInt64> YearCreated = [];
+    List<string?> Descriptions = [];
+    List<string?> Species = [];
+    List<string?> FirstAppearance = [];
+    List<UInt64?> YearCreated = [];
     // to populate the lists with data, read from the data file
     try
     {
@@ -89,7 +89,20 @@ else
                     Console.WriteLine("Enter year created:");
                     UInt64 yearCreated = UInt64.Parse(Console.ReadLine());
                     
-                    Console.WriteLine($"{Id}, {Name}, {Description}, {species}, {firstAppearance}, {yearCreated}");
+                    // Console.WriteLine($"{Id}, {Name}, {Description}, {species}, {firstAppearance}, {yearCreated}");
+                                        // create file from data
+                    StreamWriter sw = new(file, true);
+                    sw.WriteLine($"{Id},{Name},{Description}");
+                    sw.Close();
+                    // add new character details to Lists
+                    Ids.Add(Id);
+                    Names.Add(Name);
+                    Descriptions.Add(Description);
+                    Species.Add(species);
+                    FirstAppearance.Add(firstAppearance);
+                    YearCreated.Add(yearCreated);
+                    // log transaction
+                    logger.Info($"Character id {Id} added");
                 }
             }
             else
